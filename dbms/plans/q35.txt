@@ -1,0 +1,287 @@
+-- Q35: Seed: create nested test cases
+-- WRITE
+-- Source: backend/prisma/seed.js
+-- SQL:
+INSERT INTO test_cases (problem_id,position,is_sample,input,expected_output) VALUES (1,6,TRUE,'1 2','3'),(1,7,TRUE,'2 2','4'),(1,8,FALSE,'0 1','1'),(1,9,FALSE,'-1 1','0'),(1,10,FALSE,'3 4','7');
+-- Preparation inside transaction, outside timed statement:
+-- None
+-- Every run: BEGIN; preparation; EXPLAIN (...); ROLLBACK;
+
+-- Run 1
+[
+  {
+    "Plan": {
+      "Node Type": "ModifyTable",
+      "Operation": "Insert",
+      "Parallel Aware": false,
+      "Async Capable": false,
+      "Relation Name": "test_cases",
+      "Schema": "public",
+      "Alias": "test_cases",
+      "Startup Cost": 0.0,
+      "Total Cost": 0.09,
+      "Plan Rows": 0,
+      "Plan Width": 0,
+      "Actual Startup Time": 0.091,
+      "Actual Total Time": 0.091,
+      "Actual Rows": 0.0,
+      "Actual Loops": 1,
+      "Disabled": false,
+      "Shared Hit Blocks": 82,
+      "Shared Read Blocks": 0,
+      "Shared Dirtied Blocks": 0,
+      "Shared Written Blocks": 0,
+      "Local Hit Blocks": 0,
+      "Local Read Blocks": 0,
+      "Local Dirtied Blocks": 0,
+      "Local Written Blocks": 0,
+      "Temp Read Blocks": 0,
+      "Temp Written Blocks": 0,
+      "Plans": [
+        {
+          "Node Type": "Values Scan",
+          "Parent Relationship": "Outer",
+          "Parallel Aware": false,
+          "Async Capable": false,
+          "Alias": "*VALUES*",
+          "Startup Cost": 0.0,
+          "Total Cost": 0.09,
+          "Plan Rows": 5,
+          "Plan Width": 77,
+          "Actual Startup Time": 0.025,
+          "Actual Total Time": 0.027,
+          "Actual Rows": 5.0,
+          "Actual Loops": 1,
+          "Disabled": false,
+          "Output": [
+            "nextval('test_cases_id_seq'::regclass)",
+            "\"*VALUES*\".column1",
+            "\"*VALUES*\".column4",
+            "\"*VALUES*\".column5",
+            "\"*VALUES*\".column3",
+            "\"*VALUES*\".column2"
+          ],
+          "Shared Hit Blocks": 21,
+          "Shared Read Blocks": 0,
+          "Shared Dirtied Blocks": 0,
+          "Shared Written Blocks": 0,
+          "Local Hit Blocks": 0,
+          "Local Read Blocks": 0,
+          "Local Dirtied Blocks": 0,
+          "Local Written Blocks": 0,
+          "Temp Read Blocks": 0,
+          "Temp Written Blocks": 0
+        }
+      ]
+    },
+    "Planning": {
+      "Shared Hit Blocks": 13,
+      "Shared Read Blocks": 0,
+      "Shared Dirtied Blocks": 0,
+      "Shared Written Blocks": 0,
+      "Local Hit Blocks": 0,
+      "Local Read Blocks": 0,
+      "Local Dirtied Blocks": 0,
+      "Local Written Blocks": 0,
+      "Temp Read Blocks": 0,
+      "Temp Written Blocks": 0
+    },
+    "Planning Time": 0.039,
+    "Triggers": [
+      {
+        "Trigger Name": "RI_ConstraintTrigger_c_16479",
+        "Constraint Name": "test_cases_problem_id_fkey",
+        "Relation": "test_cases",
+        "Time": 0.224,
+        "Calls": 5
+      }
+    ],
+    "Execution Time": 0.33
+  }
+]
+
+-- Run 2
+[
+  {
+    "Plan": {
+      "Node Type": "ModifyTable",
+      "Operation": "Insert",
+      "Parallel Aware": false,
+      "Async Capable": false,
+      "Relation Name": "test_cases",
+      "Schema": "public",
+      "Alias": "test_cases",
+      "Startup Cost": 0.0,
+      "Total Cost": 0.09,
+      "Plan Rows": 0,
+      "Plan Width": 0,
+      "Actual Startup Time": 0.07,
+      "Actual Total Time": 0.07,
+      "Actual Rows": 0.0,
+      "Actual Loops": 1,
+      "Disabled": false,
+      "Shared Hit Blocks": 85,
+      "Shared Read Blocks": 0,
+      "Shared Dirtied Blocks": 0,
+      "Shared Written Blocks": 0,
+      "Local Hit Blocks": 0,
+      "Local Read Blocks": 0,
+      "Local Dirtied Blocks": 0,
+      "Local Written Blocks": 0,
+      "Temp Read Blocks": 0,
+      "Temp Written Blocks": 0,
+      "Plans": [
+        {
+          "Node Type": "Values Scan",
+          "Parent Relationship": "Outer",
+          "Parallel Aware": false,
+          "Async Capable": false,
+          "Alias": "*VALUES*",
+          "Startup Cost": 0.0,
+          "Total Cost": 0.09,
+          "Plan Rows": 5,
+          "Plan Width": 77,
+          "Actual Startup Time": 0.016,
+          "Actual Total Time": 0.018,
+          "Actual Rows": 5.0,
+          "Actual Loops": 1,
+          "Disabled": false,
+          "Output": [
+            "nextval('test_cases_id_seq'::regclass)",
+            "\"*VALUES*\".column1",
+            "\"*VALUES*\".column4",
+            "\"*VALUES*\".column5",
+            "\"*VALUES*\".column3",
+            "\"*VALUES*\".column2"
+          ],
+          "Shared Hit Blocks": 19,
+          "Shared Read Blocks": 0,
+          "Shared Dirtied Blocks": 0,
+          "Shared Written Blocks": 0,
+          "Local Hit Blocks": 0,
+          "Local Read Blocks": 0,
+          "Local Dirtied Blocks": 0,
+          "Local Written Blocks": 0,
+          "Temp Read Blocks": 0,
+          "Temp Written Blocks": 0
+        }
+      ]
+    },
+    "Planning": {
+      "Shared Hit Blocks": 13,
+      "Shared Read Blocks": 0,
+      "Shared Dirtied Blocks": 0,
+      "Shared Written Blocks": 0,
+      "Local Hit Blocks": 0,
+      "Local Read Blocks": 0,
+      "Local Dirtied Blocks": 0,
+      "Local Written Blocks": 0,
+      "Temp Read Blocks": 0,
+      "Temp Written Blocks": 0
+    },
+    "Planning Time": 0.033,
+    "Triggers": [
+      {
+        "Trigger Name": "RI_ConstraintTrigger_c_16479",
+        "Constraint Name": "test_cases_problem_id_fkey",
+        "Relation": "test_cases",
+        "Time": 0.169,
+        "Calls": 5
+      }
+    ],
+    "Execution Time": 0.251
+  }
+]
+
+-- Run 3
+[
+  {
+    "Plan": {
+      "Node Type": "ModifyTable",
+      "Operation": "Insert",
+      "Parallel Aware": false,
+      "Async Capable": false,
+      "Relation Name": "test_cases",
+      "Schema": "public",
+      "Alias": "test_cases",
+      "Startup Cost": 0.0,
+      "Total Cost": 0.09,
+      "Plan Rows": 0,
+      "Plan Width": 0,
+      "Actual Startup Time": 0.07,
+      "Actual Total Time": 0.07,
+      "Actual Rows": 0.0,
+      "Actual Loops": 1,
+      "Disabled": false,
+      "Shared Hit Blocks": 85,
+      "Shared Read Blocks": 0,
+      "Shared Dirtied Blocks": 0,
+      "Shared Written Blocks": 0,
+      "Local Hit Blocks": 0,
+      "Local Read Blocks": 0,
+      "Local Dirtied Blocks": 0,
+      "Local Written Blocks": 0,
+      "Temp Read Blocks": 0,
+      "Temp Written Blocks": 0,
+      "Plans": [
+        {
+          "Node Type": "Values Scan",
+          "Parent Relationship": "Outer",
+          "Parallel Aware": false,
+          "Async Capable": false,
+          "Alias": "*VALUES*",
+          "Startup Cost": 0.0,
+          "Total Cost": 0.09,
+          "Plan Rows": 5,
+          "Plan Width": 77,
+          "Actual Startup Time": 0.015,
+          "Actual Total Time": 0.017,
+          "Actual Rows": 5.0,
+          "Actual Loops": 1,
+          "Disabled": false,
+          "Output": [
+            "nextval('test_cases_id_seq'::regclass)",
+            "\"*VALUES*\".column1",
+            "\"*VALUES*\".column4",
+            "\"*VALUES*\".column5",
+            "\"*VALUES*\".column3",
+            "\"*VALUES*\".column2"
+          ],
+          "Shared Hit Blocks": 19,
+          "Shared Read Blocks": 0,
+          "Shared Dirtied Blocks": 0,
+          "Shared Written Blocks": 0,
+          "Local Hit Blocks": 0,
+          "Local Read Blocks": 0,
+          "Local Dirtied Blocks": 0,
+          "Local Written Blocks": 0,
+          "Temp Read Blocks": 0,
+          "Temp Written Blocks": 0
+        }
+      ]
+    },
+    "Planning": {
+      "Shared Hit Blocks": 13,
+      "Shared Read Blocks": 0,
+      "Shared Dirtied Blocks": 0,
+      "Shared Written Blocks": 0,
+      "Local Hit Blocks": 0,
+      "Local Read Blocks": 0,
+      "Local Dirtied Blocks": 0,
+      "Local Written Blocks": 0,
+      "Temp Read Blocks": 0,
+      "Temp Written Blocks": 0
+    },
+    "Planning Time": 0.036,
+    "Triggers": [
+      {
+        "Trigger Name": "RI_ConstraintTrigger_c_16479",
+        "Constraint Name": "test_cases_problem_id_fkey",
+        "Relation": "test_cases",
+        "Time": 0.168,
+        "Calls": 5
+      }
+    ],
+    "Execution Time": 0.252
+  }
+]

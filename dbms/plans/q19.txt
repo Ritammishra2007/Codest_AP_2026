@@ -1,0 +1,305 @@
+-- Q19: Fetch User Submissions for Room
+-- READ
+-- Source: backend/controllers/submissionController.js
+-- SQL:
+SELECT "id", "sequence_number", "status", "verdict", "submitted_at", "judged_at" FROM "submissions" WHERE "room_id" = 1 AND "user_id" = 1 ORDER BY "sequence_number" DESC;
+-- Preparation inside transaction, outside timed statement:
+-- None
+-- Every run: BEGIN; preparation; EXPLAIN (...); ROLLBACK;
+
+-- Run 1
+[
+  {
+    "Plan": {
+      "Node Type": "Sort",
+      "Parallel Aware": false,
+      "Async Capable": false,
+      "Startup Cost": 1.04,
+      "Total Cost": 1.04,
+      "Plan Rows": 1,
+      "Plan Width": 56,
+      "Actual Startup Time": 0.009,
+      "Actual Total Time": 0.009,
+      "Actual Rows": 1.0,
+      "Actual Loops": 1,
+      "Disabled": false,
+      "Output": [
+        "id",
+        "sequence_number",
+        "status",
+        "verdict",
+        "submitted_at",
+        "judged_at"
+      ],
+      "Sort Key": [
+        "submissions.sequence_number DESC"
+      ],
+      "Sort Method": "quicksort",
+      "Sort Space Used": 25,
+      "Sort Space Type": "Memory",
+      "Shared Hit Blocks": 4,
+      "Shared Read Blocks": 0,
+      "Shared Dirtied Blocks": 0,
+      "Shared Written Blocks": 0,
+      "Local Hit Blocks": 0,
+      "Local Read Blocks": 0,
+      "Local Dirtied Blocks": 0,
+      "Local Written Blocks": 0,
+      "Temp Read Blocks": 0,
+      "Temp Written Blocks": 0,
+      "Plans": [
+        {
+          "Node Type": "Seq Scan",
+          "Parent Relationship": "Outer",
+          "Parallel Aware": false,
+          "Async Capable": false,
+          "Relation Name": "submissions",
+          "Schema": "public",
+          "Alias": "submissions",
+          "Startup Cost": 0.0,
+          "Total Cost": 1.03,
+          "Plan Rows": 1,
+          "Plan Width": 56,
+          "Actual Startup Time": 0.003,
+          "Actual Total Time": 0.003,
+          "Actual Rows": 1.0,
+          "Actual Loops": 1,
+          "Disabled": false,
+          "Output": [
+            "id",
+            "sequence_number",
+            "status",
+            "verdict",
+            "submitted_at",
+            "judged_at"
+          ],
+          "Filter": "((submissions.room_id = 1) AND (submissions.user_id = 1))",
+          "Rows Removed by Filter": 1,
+          "Shared Hit Blocks": 1,
+          "Shared Read Blocks": 0,
+          "Shared Dirtied Blocks": 0,
+          "Shared Written Blocks": 0,
+          "Local Hit Blocks": 0,
+          "Local Read Blocks": 0,
+          "Local Dirtied Blocks": 0,
+          "Local Written Blocks": 0,
+          "Temp Read Blocks": 0,
+          "Temp Written Blocks": 0
+        }
+      ]
+    },
+    "Planning": {
+      "Shared Hit Blocks": 103,
+      "Shared Read Blocks": 0,
+      "Shared Dirtied Blocks": 0,
+      "Shared Written Blocks": 0,
+      "Local Hit Blocks": 0,
+      "Local Read Blocks": 0,
+      "Local Dirtied Blocks": 0,
+      "Local Written Blocks": 0,
+      "Temp Read Blocks": 0,
+      "Temp Written Blocks": 0
+    },
+    "Planning Time": 0.129,
+    "Triggers": [],
+    "Execution Time": 0.02
+  }
+]
+
+-- Run 2
+[
+  {
+    "Plan": {
+      "Node Type": "Sort",
+      "Parallel Aware": false,
+      "Async Capable": false,
+      "Startup Cost": 1.04,
+      "Total Cost": 1.04,
+      "Plan Rows": 1,
+      "Plan Width": 56,
+      "Actual Startup Time": 0.007,
+      "Actual Total Time": 0.007,
+      "Actual Rows": 1.0,
+      "Actual Loops": 1,
+      "Disabled": false,
+      "Output": [
+        "id",
+        "sequence_number",
+        "status",
+        "verdict",
+        "submitted_at",
+        "judged_at"
+      ],
+      "Sort Key": [
+        "submissions.sequence_number DESC"
+      ],
+      "Sort Method": "quicksort",
+      "Sort Space Used": 25,
+      "Sort Space Type": "Memory",
+      "Shared Hit Blocks": 4,
+      "Shared Read Blocks": 0,
+      "Shared Dirtied Blocks": 0,
+      "Shared Written Blocks": 0,
+      "Local Hit Blocks": 0,
+      "Local Read Blocks": 0,
+      "Local Dirtied Blocks": 0,
+      "Local Written Blocks": 0,
+      "Temp Read Blocks": 0,
+      "Temp Written Blocks": 0,
+      "Plans": [
+        {
+          "Node Type": "Seq Scan",
+          "Parent Relationship": "Outer",
+          "Parallel Aware": false,
+          "Async Capable": false,
+          "Relation Name": "submissions",
+          "Schema": "public",
+          "Alias": "submissions",
+          "Startup Cost": 0.0,
+          "Total Cost": 1.03,
+          "Plan Rows": 1,
+          "Plan Width": 56,
+          "Actual Startup Time": 0.002,
+          "Actual Total Time": 0.002,
+          "Actual Rows": 1.0,
+          "Actual Loops": 1,
+          "Disabled": false,
+          "Output": [
+            "id",
+            "sequence_number",
+            "status",
+            "verdict",
+            "submitted_at",
+            "judged_at"
+          ],
+          "Filter": "((submissions.room_id = 1) AND (submissions.user_id = 1))",
+          "Rows Removed by Filter": 1,
+          "Shared Hit Blocks": 1,
+          "Shared Read Blocks": 0,
+          "Shared Dirtied Blocks": 0,
+          "Shared Written Blocks": 0,
+          "Local Hit Blocks": 0,
+          "Local Read Blocks": 0,
+          "Local Dirtied Blocks": 0,
+          "Local Written Blocks": 0,
+          "Temp Read Blocks": 0,
+          "Temp Written Blocks": 0
+        }
+      ]
+    },
+    "Planning": {
+      "Shared Hit Blocks": 103,
+      "Shared Read Blocks": 0,
+      "Shared Dirtied Blocks": 0,
+      "Shared Written Blocks": 0,
+      "Local Hit Blocks": 0,
+      "Local Read Blocks": 0,
+      "Local Dirtied Blocks": 0,
+      "Local Written Blocks": 0,
+      "Temp Read Blocks": 0,
+      "Temp Written Blocks": 0
+    },
+    "Planning Time": 0.123,
+    "Triggers": [],
+    "Execution Time": 0.018
+  }
+]
+
+-- Run 3
+[
+  {
+    "Plan": {
+      "Node Type": "Sort",
+      "Parallel Aware": false,
+      "Async Capable": false,
+      "Startup Cost": 1.04,
+      "Total Cost": 1.04,
+      "Plan Rows": 1,
+      "Plan Width": 56,
+      "Actual Startup Time": 0.007,
+      "Actual Total Time": 0.007,
+      "Actual Rows": 1.0,
+      "Actual Loops": 1,
+      "Disabled": false,
+      "Output": [
+        "id",
+        "sequence_number",
+        "status",
+        "verdict",
+        "submitted_at",
+        "judged_at"
+      ],
+      "Sort Key": [
+        "submissions.sequence_number DESC"
+      ],
+      "Sort Method": "quicksort",
+      "Sort Space Used": 25,
+      "Sort Space Type": "Memory",
+      "Shared Hit Blocks": 4,
+      "Shared Read Blocks": 0,
+      "Shared Dirtied Blocks": 0,
+      "Shared Written Blocks": 0,
+      "Local Hit Blocks": 0,
+      "Local Read Blocks": 0,
+      "Local Dirtied Blocks": 0,
+      "Local Written Blocks": 0,
+      "Temp Read Blocks": 0,
+      "Temp Written Blocks": 0,
+      "Plans": [
+        {
+          "Node Type": "Seq Scan",
+          "Parent Relationship": "Outer",
+          "Parallel Aware": false,
+          "Async Capable": false,
+          "Relation Name": "submissions",
+          "Schema": "public",
+          "Alias": "submissions",
+          "Startup Cost": 0.0,
+          "Total Cost": 1.03,
+          "Plan Rows": 1,
+          "Plan Width": 56,
+          "Actual Startup Time": 0.002,
+          "Actual Total Time": 0.002,
+          "Actual Rows": 1.0,
+          "Actual Loops": 1,
+          "Disabled": false,
+          "Output": [
+            "id",
+            "sequence_number",
+            "status",
+            "verdict",
+            "submitted_at",
+            "judged_at"
+          ],
+          "Filter": "((submissions.room_id = 1) AND (submissions.user_id = 1))",
+          "Rows Removed by Filter": 1,
+          "Shared Hit Blocks": 1,
+          "Shared Read Blocks": 0,
+          "Shared Dirtied Blocks": 0,
+          "Shared Written Blocks": 0,
+          "Local Hit Blocks": 0,
+          "Local Read Blocks": 0,
+          "Local Dirtied Blocks": 0,
+          "Local Written Blocks": 0,
+          "Temp Read Blocks": 0,
+          "Temp Written Blocks": 0
+        }
+      ]
+    },
+    "Planning": {
+      "Shared Hit Blocks": 103,
+      "Shared Read Blocks": 0,
+      "Shared Dirtied Blocks": 0,
+      "Shared Written Blocks": 0,
+      "Local Hit Blocks": 0,
+      "Local Read Blocks": 0,
+      "Local Dirtied Blocks": 0,
+      "Local Written Blocks": 0,
+      "Temp Read Blocks": 0,
+      "Temp Written Blocks": 0
+    },
+    "Planning Time": 0.12,
+    "Triggers": [],
+    "Execution Time": 0.019
+  }
+]

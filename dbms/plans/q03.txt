@@ -1,0 +1,275 @@
+-- Q03: Insert Newly Registered User
+-- WRITE
+-- Source: backend/controllers/authController.js
+-- SQL:
+INSERT INTO users (username,email,password_hash) VALUES ('bench_new','bench_new@codest.local','demo_hash_not_for_login') RETURNING id,username,email,created_at;
+-- Preparation inside transaction, outside timed statement:
+-- None
+-- Every run: BEGIN; preparation; EXPLAIN (...); ROLLBACK;
+
+-- Run 1
+[
+  {
+    "Plan": {
+      "Node Type": "ModifyTable",
+      "Operation": "Insert",
+      "Parallel Aware": false,
+      "Async Capable": false,
+      "Relation Name": "users",
+      "Schema": "public",
+      "Alias": "users",
+      "Startup Cost": 0.0,
+      "Total Cost": 0.02,
+      "Plan Rows": 1,
+      "Plan Width": 222,
+      "Actual Startup Time": 0.086,
+      "Actual Total Time": 0.087,
+      "Actual Rows": 1.0,
+      "Actual Loops": 1,
+      "Disabled": false,
+      "Output": [
+        "users.id",
+        "users.username",
+        "users.email",
+        "users.created_at"
+      ],
+      "Shared Hit Blocks": 82,
+      "Shared Read Blocks": 0,
+      "Shared Dirtied Blocks": 0,
+      "Shared Written Blocks": 0,
+      "Local Hit Blocks": 0,
+      "Local Read Blocks": 0,
+      "Local Dirtied Blocks": 0,
+      "Local Written Blocks": 0,
+      "Temp Read Blocks": 0,
+      "Temp Written Blocks": 0,
+      "Plans": [
+        {
+          "Node Type": "Result",
+          "Parent Relationship": "Outer",
+          "Parallel Aware": false,
+          "Async Capable": false,
+          "Startup Cost": 0.0,
+          "Total Cost": 0.02,
+          "Plan Rows": 1,
+          "Plan Width": 222,
+          "Actual Startup Time": 0.022,
+          "Actual Total Time": 0.022,
+          "Actual Rows": 1.0,
+          "Actual Loops": 1,
+          "Disabled": false,
+          "Output": [
+            "nextval('users_id_seq'::regclass)",
+            "'bench_new'::character varying(30)",
+            "'bench_new@codest.local'::character varying(255)",
+            "'demo_hash_not_for_login'::text",
+            "CURRENT_TIMESTAMP"
+          ],
+          "Shared Hit Blocks": 17,
+          "Shared Read Blocks": 0,
+          "Shared Dirtied Blocks": 0,
+          "Shared Written Blocks": 0,
+          "Local Hit Blocks": 0,
+          "Local Read Blocks": 0,
+          "Local Dirtied Blocks": 0,
+          "Local Written Blocks": 0,
+          "Temp Read Blocks": 0,
+          "Temp Written Blocks": 0
+        }
+      ]
+    },
+    "Planning": {
+      "Shared Hit Blocks": 12,
+      "Shared Read Blocks": 0,
+      "Shared Dirtied Blocks": 0,
+      "Shared Written Blocks": 0,
+      "Local Hit Blocks": 0,
+      "Local Read Blocks": 0,
+      "Local Dirtied Blocks": 0,
+      "Local Written Blocks": 0,
+      "Temp Read Blocks": 0,
+      "Temp Written Blocks": 0
+    },
+    "Planning Time": 0.034,
+    "Triggers": [],
+    "Execution Time": 0.095
+  }
+]
+
+-- Run 2
+[
+  {
+    "Plan": {
+      "Node Type": "ModifyTable",
+      "Operation": "Insert",
+      "Parallel Aware": false,
+      "Async Capable": false,
+      "Relation Name": "users",
+      "Schema": "public",
+      "Alias": "users",
+      "Startup Cost": 0.0,
+      "Total Cost": 0.02,
+      "Plan Rows": 1,
+      "Plan Width": 222,
+      "Actual Startup Time": 0.067,
+      "Actual Total Time": 0.068,
+      "Actual Rows": 1.0,
+      "Actual Loops": 1,
+      "Disabled": false,
+      "Output": [
+        "users.id",
+        "users.username",
+        "users.email",
+        "users.created_at"
+      ],
+      "Shared Hit Blocks": 82,
+      "Shared Read Blocks": 0,
+      "Shared Dirtied Blocks": 0,
+      "Shared Written Blocks": 0,
+      "Local Hit Blocks": 0,
+      "Local Read Blocks": 0,
+      "Local Dirtied Blocks": 0,
+      "Local Written Blocks": 0,
+      "Temp Read Blocks": 0,
+      "Temp Written Blocks": 0,
+      "Plans": [
+        {
+          "Node Type": "Result",
+          "Parent Relationship": "Outer",
+          "Parallel Aware": false,
+          "Async Capable": false,
+          "Startup Cost": 0.0,
+          "Total Cost": 0.02,
+          "Plan Rows": 1,
+          "Plan Width": 222,
+          "Actual Startup Time": 0.015,
+          "Actual Total Time": 0.015,
+          "Actual Rows": 1.0,
+          "Actual Loops": 1,
+          "Disabled": false,
+          "Output": [
+            "nextval('users_id_seq'::regclass)",
+            "'bench_new'::character varying(30)",
+            "'bench_new@codest.local'::character varying(255)",
+            "'demo_hash_not_for_login'::text",
+            "CURRENT_TIMESTAMP"
+          ],
+          "Shared Hit Blocks": 15,
+          "Shared Read Blocks": 0,
+          "Shared Dirtied Blocks": 0,
+          "Shared Written Blocks": 0,
+          "Local Hit Blocks": 0,
+          "Local Read Blocks": 0,
+          "Local Dirtied Blocks": 0,
+          "Local Written Blocks": 0,
+          "Temp Read Blocks": 0,
+          "Temp Written Blocks": 0
+        }
+      ]
+    },
+    "Planning": {
+      "Shared Hit Blocks": 12,
+      "Shared Read Blocks": 0,
+      "Shared Dirtied Blocks": 0,
+      "Shared Written Blocks": 0,
+      "Local Hit Blocks": 0,
+      "Local Read Blocks": 0,
+      "Local Dirtied Blocks": 0,
+      "Local Written Blocks": 0,
+      "Temp Read Blocks": 0,
+      "Temp Written Blocks": 0
+    },
+    "Planning Time": 0.035,
+    "Triggers": [],
+    "Execution Time": 0.076
+  }
+]
+
+-- Run 3
+[
+  {
+    "Plan": {
+      "Node Type": "ModifyTable",
+      "Operation": "Insert",
+      "Parallel Aware": false,
+      "Async Capable": false,
+      "Relation Name": "users",
+      "Schema": "public",
+      "Alias": "users",
+      "Startup Cost": 0.0,
+      "Total Cost": 0.02,
+      "Plan Rows": 1,
+      "Plan Width": 222,
+      "Actual Startup Time": 0.061,
+      "Actual Total Time": 0.061,
+      "Actual Rows": 1.0,
+      "Actual Loops": 1,
+      "Disabled": false,
+      "Output": [
+        "users.id",
+        "users.username",
+        "users.email",
+        "users.created_at"
+      ],
+      "Shared Hit Blocks": 82,
+      "Shared Read Blocks": 0,
+      "Shared Dirtied Blocks": 0,
+      "Shared Written Blocks": 0,
+      "Local Hit Blocks": 0,
+      "Local Read Blocks": 0,
+      "Local Dirtied Blocks": 0,
+      "Local Written Blocks": 0,
+      "Temp Read Blocks": 0,
+      "Temp Written Blocks": 0,
+      "Plans": [
+        {
+          "Node Type": "Result",
+          "Parent Relationship": "Outer",
+          "Parallel Aware": false,
+          "Async Capable": false,
+          "Startup Cost": 0.0,
+          "Total Cost": 0.02,
+          "Plan Rows": 1,
+          "Plan Width": 222,
+          "Actual Startup Time": 0.013,
+          "Actual Total Time": 0.013,
+          "Actual Rows": 1.0,
+          "Actual Loops": 1,
+          "Disabled": false,
+          "Output": [
+            "nextval('users_id_seq'::regclass)",
+            "'bench_new'::character varying(30)",
+            "'bench_new@codest.local'::character varying(255)",
+            "'demo_hash_not_for_login'::text",
+            "CURRENT_TIMESTAMP"
+          ],
+          "Shared Hit Blocks": 15,
+          "Shared Read Blocks": 0,
+          "Shared Dirtied Blocks": 0,
+          "Shared Written Blocks": 0,
+          "Local Hit Blocks": 0,
+          "Local Read Blocks": 0,
+          "Local Dirtied Blocks": 0,
+          "Local Written Blocks": 0,
+          "Temp Read Blocks": 0,
+          "Temp Written Blocks": 0
+        }
+      ]
+    },
+    "Planning": {
+      "Shared Hit Blocks": 12,
+      "Shared Read Blocks": 0,
+      "Shared Dirtied Blocks": 0,
+      "Shared Written Blocks": 0,
+      "Local Hit Blocks": 0,
+      "Local Read Blocks": 0,
+      "Local Dirtied Blocks": 0,
+      "Local Written Blocks": 0,
+      "Temp Read Blocks": 0,
+      "Temp Written Blocks": 0
+    },
+    "Planning Time": 0.029,
+    "Triggers": [],
+    "Execution Time": 0.068
+  }
+]

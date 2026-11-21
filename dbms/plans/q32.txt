@@ -1,0 +1,341 @@
+-- Q32: Reset: delete all users
+-- WRITE
+-- Source: backend/prisma/reset.js
+-- SQL:
+DELETE FROM users;
+-- Preparation inside transaction, outside timed statement:
+DELETE FROM submissions; DELETE FROM rooms; DELETE FROM test_cases; DELETE FROM problems;
+-- Every run: BEGIN; preparation; EXPLAIN (...); ROLLBACK;
+
+-- Run 1
+[
+  {
+    "Plan": {
+      "Node Type": "ModifyTable",
+      "Operation": "Delete",
+      "Parallel Aware": false,
+      "Async Capable": false,
+      "Relation Name": "users",
+      "Schema": "public",
+      "Alias": "users",
+      "Startup Cost": 0.0,
+      "Total Cost": 1.02,
+      "Plan Rows": 0,
+      "Plan Width": 0,
+      "Actual Startup Time": 0.008,
+      "Actual Total Time": 0.008,
+      "Actual Rows": 0.0,
+      "Actual Loops": 1,
+      "Disabled": false,
+      "Shared Hit Blocks": 13,
+      "Shared Read Blocks": 0,
+      "Shared Dirtied Blocks": 0,
+      "Shared Written Blocks": 0,
+      "Local Hit Blocks": 0,
+      "Local Read Blocks": 0,
+      "Local Dirtied Blocks": 0,
+      "Local Written Blocks": 0,
+      "Temp Read Blocks": 0,
+      "Temp Written Blocks": 0,
+      "Plans": [
+        {
+          "Node Type": "Seq Scan",
+          "Parent Relationship": "Outer",
+          "Parallel Aware": false,
+          "Async Capable": false,
+          "Relation Name": "users",
+          "Schema": "public",
+          "Alias": "users",
+          "Startup Cost": 0.0,
+          "Total Cost": 1.02,
+          "Plan Rows": 2,
+          "Plan Width": 6,
+          "Actual Startup Time": 0.002,
+          "Actual Total Time": 0.002,
+          "Actual Rows": 2.0,
+          "Actual Loops": 1,
+          "Disabled": false,
+          "Output": [
+            "ctid"
+          ],
+          "Shared Hit Blocks": 1,
+          "Shared Read Blocks": 0,
+          "Shared Dirtied Blocks": 0,
+          "Shared Written Blocks": 0,
+          "Local Hit Blocks": 0,
+          "Local Read Blocks": 0,
+          "Local Dirtied Blocks": 0,
+          "Local Written Blocks": 0,
+          "Temp Read Blocks": 0,
+          "Temp Written Blocks": 0
+        }
+      ]
+    },
+    "Planning": {
+      "Shared Hit Blocks": 41,
+      "Shared Read Blocks": 0,
+      "Shared Dirtied Blocks": 0,
+      "Shared Written Blocks": 0,
+      "Local Hit Blocks": 0,
+      "Local Read Blocks": 0,
+      "Local Dirtied Blocks": 0,
+      "Local Written Blocks": 0,
+      "Temp Read Blocks": 0,
+      "Temp Written Blocks": 0
+    },
+    "Planning Time": 0.079,
+    "Triggers": [
+      {
+        "Trigger Name": "RI_ConstraintTrigger_a_16487",
+        "Constraint Name": "rooms_player1_id_fkey",
+        "Relation": "users",
+        "Time": 0.023,
+        "Calls": 2
+      },
+      {
+        "Trigger Name": "RI_ConstraintTrigger_a_16492",
+        "Constraint Name": "rooms_player2_id_fkey",
+        "Relation": "users",
+        "Time": 0.02,
+        "Calls": 2
+      },
+      {
+        "Trigger Name": "RI_ConstraintTrigger_a_16497",
+        "Constraint Name": "rooms_winner_id_fkey",
+        "Relation": "users",
+        "Time": 0.017,
+        "Calls": 2
+      },
+      {
+        "Trigger Name": "RI_ConstraintTrigger_a_16507",
+        "Constraint Name": "submissions_user_id_fkey",
+        "Relation": "users",
+        "Time": 0.017,
+        "Calls": 2
+      }
+    ],
+    "Execution Time": 0.089
+  }
+]
+
+-- Run 2
+[
+  {
+    "Plan": {
+      "Node Type": "ModifyTable",
+      "Operation": "Delete",
+      "Parallel Aware": false,
+      "Async Capable": false,
+      "Relation Name": "users",
+      "Schema": "public",
+      "Alias": "users",
+      "Startup Cost": 0.0,
+      "Total Cost": 1.02,
+      "Plan Rows": 0,
+      "Plan Width": 0,
+      "Actual Startup Time": 0.007,
+      "Actual Total Time": 0.007,
+      "Actual Rows": 0.0,
+      "Actual Loops": 1,
+      "Disabled": false,
+      "Shared Hit Blocks": 13,
+      "Shared Read Blocks": 0,
+      "Shared Dirtied Blocks": 0,
+      "Shared Written Blocks": 0,
+      "Local Hit Blocks": 0,
+      "Local Read Blocks": 0,
+      "Local Dirtied Blocks": 0,
+      "Local Written Blocks": 0,
+      "Temp Read Blocks": 0,
+      "Temp Written Blocks": 0,
+      "Plans": [
+        {
+          "Node Type": "Seq Scan",
+          "Parent Relationship": "Outer",
+          "Parallel Aware": false,
+          "Async Capable": false,
+          "Relation Name": "users",
+          "Schema": "public",
+          "Alias": "users",
+          "Startup Cost": 0.0,
+          "Total Cost": 1.02,
+          "Plan Rows": 2,
+          "Plan Width": 6,
+          "Actual Startup Time": 0.001,
+          "Actual Total Time": 0.001,
+          "Actual Rows": 2.0,
+          "Actual Loops": 1,
+          "Disabled": false,
+          "Output": [
+            "ctid"
+          ],
+          "Shared Hit Blocks": 1,
+          "Shared Read Blocks": 0,
+          "Shared Dirtied Blocks": 0,
+          "Shared Written Blocks": 0,
+          "Local Hit Blocks": 0,
+          "Local Read Blocks": 0,
+          "Local Dirtied Blocks": 0,
+          "Local Written Blocks": 0,
+          "Temp Read Blocks": 0,
+          "Temp Written Blocks": 0
+        }
+      ]
+    },
+    "Planning": {
+      "Shared Hit Blocks": 41,
+      "Shared Read Blocks": 0,
+      "Shared Dirtied Blocks": 0,
+      "Shared Written Blocks": 0,
+      "Local Hit Blocks": 0,
+      "Local Read Blocks": 0,
+      "Local Dirtied Blocks": 0,
+      "Local Written Blocks": 0,
+      "Temp Read Blocks": 0,
+      "Temp Written Blocks": 0
+    },
+    "Planning Time": 0.07,
+    "Triggers": [
+      {
+        "Trigger Name": "RI_ConstraintTrigger_a_16487",
+        "Constraint Name": "rooms_player1_id_fkey",
+        "Relation": "users",
+        "Time": 0.027,
+        "Calls": 2
+      },
+      {
+        "Trigger Name": "RI_ConstraintTrigger_a_16492",
+        "Constraint Name": "rooms_player2_id_fkey",
+        "Relation": "users",
+        "Time": 0.02,
+        "Calls": 2
+      },
+      {
+        "Trigger Name": "RI_ConstraintTrigger_a_16497",
+        "Constraint Name": "rooms_winner_id_fkey",
+        "Relation": "users",
+        "Time": 0.017,
+        "Calls": 2
+      },
+      {
+        "Trigger Name": "RI_ConstraintTrigger_a_16507",
+        "Constraint Name": "submissions_user_id_fkey",
+        "Relation": "users",
+        "Time": 0.017,
+        "Calls": 2
+      }
+    ],
+    "Execution Time": 0.093
+  }
+]
+
+-- Run 3
+[
+  {
+    "Plan": {
+      "Node Type": "ModifyTable",
+      "Operation": "Delete",
+      "Parallel Aware": false,
+      "Async Capable": false,
+      "Relation Name": "users",
+      "Schema": "public",
+      "Alias": "users",
+      "Startup Cost": 0.0,
+      "Total Cost": 1.02,
+      "Plan Rows": 0,
+      "Plan Width": 0,
+      "Actual Startup Time": 0.007,
+      "Actual Total Time": 0.007,
+      "Actual Rows": 0.0,
+      "Actual Loops": 1,
+      "Disabled": false,
+      "Shared Hit Blocks": 13,
+      "Shared Read Blocks": 0,
+      "Shared Dirtied Blocks": 0,
+      "Shared Written Blocks": 0,
+      "Local Hit Blocks": 0,
+      "Local Read Blocks": 0,
+      "Local Dirtied Blocks": 0,
+      "Local Written Blocks": 0,
+      "Temp Read Blocks": 0,
+      "Temp Written Blocks": 0,
+      "Plans": [
+        {
+          "Node Type": "Seq Scan",
+          "Parent Relationship": "Outer",
+          "Parallel Aware": false,
+          "Async Capable": false,
+          "Relation Name": "users",
+          "Schema": "public",
+          "Alias": "users",
+          "Startup Cost": 0.0,
+          "Total Cost": 1.02,
+          "Plan Rows": 2,
+          "Plan Width": 6,
+          "Actual Startup Time": 0.001,
+          "Actual Total Time": 0.002,
+          "Actual Rows": 2.0,
+          "Actual Loops": 1,
+          "Disabled": false,
+          "Output": [
+            "ctid"
+          ],
+          "Shared Hit Blocks": 1,
+          "Shared Read Blocks": 0,
+          "Shared Dirtied Blocks": 0,
+          "Shared Written Blocks": 0,
+          "Local Hit Blocks": 0,
+          "Local Read Blocks": 0,
+          "Local Dirtied Blocks": 0,
+          "Local Written Blocks": 0,
+          "Temp Read Blocks": 0,
+          "Temp Written Blocks": 0
+        }
+      ]
+    },
+    "Planning": {
+      "Shared Hit Blocks": 41,
+      "Shared Read Blocks": 0,
+      "Shared Dirtied Blocks": 0,
+      "Shared Written Blocks": 0,
+      "Local Hit Blocks": 0,
+      "Local Read Blocks": 0,
+      "Local Dirtied Blocks": 0,
+      "Local Written Blocks": 0,
+      "Temp Read Blocks": 0,
+      "Temp Written Blocks": 0
+    },
+    "Planning Time": 0.073,
+    "Triggers": [
+      {
+        "Trigger Name": "RI_ConstraintTrigger_a_16487",
+        "Constraint Name": "rooms_player1_id_fkey",
+        "Relation": "users",
+        "Time": 0.023,
+        "Calls": 2
+      },
+      {
+        "Trigger Name": "RI_ConstraintTrigger_a_16492",
+        "Constraint Name": "rooms_player2_id_fkey",
+        "Relation": "users",
+        "Time": 0.02,
+        "Calls": 2
+      },
+      {
+        "Trigger Name": "RI_ConstraintTrigger_a_16497",
+        "Constraint Name": "rooms_winner_id_fkey",
+        "Relation": "users",
+        "Time": 0.018,
+        "Calls": 2
+      },
+      {
+        "Trigger Name": "RI_ConstraintTrigger_a_16507",
+        "Constraint Name": "submissions_user_id_fkey",
+        "Relation": "users",
+        "Time": 0.018,
+        "Calls": 2
+      }
+    ],
+    "Execution Time": 0.09
+  }
+]

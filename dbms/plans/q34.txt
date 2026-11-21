@@ -1,0 +1,296 @@
+-- Q34: Seed: create problem
+-- WRITE
+-- Source: backend/prisma/seed.js
+-- SQL:
+INSERT INTO problems (title,description,input_format,output_format,constraints_text,difficulty,time_limit_ms) VALUES ('Demo seed problem','Add A and B','Two integers','Their sum','-1000 <= A,B <= 1000','EASY',2000) RETURNING *;
+-- Preparation inside transaction, outside timed statement:
+-- None
+-- Every run: BEGIN; preparation; EXPLAIN (...); ROLLBACK;
+
+-- Run 1
+[
+  {
+    "Plan": {
+      "Node Type": "ModifyTable",
+      "Operation": "Insert",
+      "Parallel Aware": false,
+      "Async Capable": false,
+      "Relation Name": "problems",
+      "Schema": "public",
+      "Alias": "problems",
+      "Startup Cost": 0.0,
+      "Total Cost": 0.01,
+      "Plan Rows": 1,
+      "Plan Width": 243,
+      "Actual Startup Time": 0.068,
+      "Actual Total Time": 0.069,
+      "Actual Rows": 1.0,
+      "Actual Loops": 1,
+      "Disabled": false,
+      "Output": [
+        "problems.id",
+        "problems.title",
+        "problems.description",
+        "problems.input_format",
+        "problems.output_format",
+        "problems.constraints_text",
+        "problems.difficulty",
+        "problems.time_limit_ms"
+      ],
+      "Shared Hit Blocks": 50,
+      "Shared Read Blocks": 0,
+      "Shared Dirtied Blocks": 0,
+      "Shared Written Blocks": 0,
+      "Local Hit Blocks": 0,
+      "Local Read Blocks": 0,
+      "Local Dirtied Blocks": 0,
+      "Local Written Blocks": 0,
+      "Temp Read Blocks": 0,
+      "Temp Written Blocks": 0,
+      "Plans": [
+        {
+          "Node Type": "Result",
+          "Parent Relationship": "Outer",
+          "Parallel Aware": false,
+          "Async Capable": false,
+          "Startup Cost": 0.0,
+          "Total Cost": 0.01,
+          "Plan Rows": 1,
+          "Plan Width": 243,
+          "Actual Startup Time": 0.023,
+          "Actual Total Time": 0.023,
+          "Actual Rows": 1.0,
+          "Actual Loops": 1,
+          "Disabled": false,
+          "Output": [
+            "nextval('problems_id_seq'::regclass)",
+            "'Demo seed problem'::character varying(150)",
+            "'Add A and B'::text",
+            "'Two integers'::text",
+            "'Their sum'::text",
+            "'-1000 <= A,B <= 1000'::text",
+            "'EASY'::character varying(10)",
+            "2000"
+          ],
+          "Shared Hit Blocks": 17,
+          "Shared Read Blocks": 0,
+          "Shared Dirtied Blocks": 0,
+          "Shared Written Blocks": 0,
+          "Local Hit Blocks": 0,
+          "Local Read Blocks": 0,
+          "Local Dirtied Blocks": 0,
+          "Local Written Blocks": 0,
+          "Temp Read Blocks": 0,
+          "Temp Written Blocks": 0
+        }
+      ]
+    },
+    "Planning": {
+      "Shared Hit Blocks": 9,
+      "Shared Read Blocks": 0,
+      "Shared Dirtied Blocks": 0,
+      "Shared Written Blocks": 0,
+      "Local Hit Blocks": 0,
+      "Local Read Blocks": 0,
+      "Local Dirtied Blocks": 0,
+      "Local Written Blocks": 0,
+      "Temp Read Blocks": 0,
+      "Temp Written Blocks": 0
+    },
+    "Planning Time": 0.037,
+    "Triggers": [],
+    "Execution Time": 0.078
+  }
+]
+
+-- Run 2
+[
+  {
+    "Plan": {
+      "Node Type": "ModifyTable",
+      "Operation": "Insert",
+      "Parallel Aware": false,
+      "Async Capable": false,
+      "Relation Name": "problems",
+      "Schema": "public",
+      "Alias": "problems",
+      "Startup Cost": 0.0,
+      "Total Cost": 0.01,
+      "Plan Rows": 1,
+      "Plan Width": 243,
+      "Actual Startup Time": 0.053,
+      "Actual Total Time": 0.053,
+      "Actual Rows": 1.0,
+      "Actual Loops": 1,
+      "Disabled": false,
+      "Output": [
+        "problems.id",
+        "problems.title",
+        "problems.description",
+        "problems.input_format",
+        "problems.output_format",
+        "problems.constraints_text",
+        "problems.difficulty",
+        "problems.time_limit_ms"
+      ],
+      "Shared Hit Blocks": 48,
+      "Shared Read Blocks": 0,
+      "Shared Dirtied Blocks": 0,
+      "Shared Written Blocks": 0,
+      "Local Hit Blocks": 0,
+      "Local Read Blocks": 0,
+      "Local Dirtied Blocks": 0,
+      "Local Written Blocks": 0,
+      "Temp Read Blocks": 0,
+      "Temp Written Blocks": 0,
+      "Plans": [
+        {
+          "Node Type": "Result",
+          "Parent Relationship": "Outer",
+          "Parallel Aware": false,
+          "Async Capable": false,
+          "Startup Cost": 0.0,
+          "Total Cost": 0.01,
+          "Plan Rows": 1,
+          "Plan Width": 243,
+          "Actual Startup Time": 0.014,
+          "Actual Total Time": 0.014,
+          "Actual Rows": 1.0,
+          "Actual Loops": 1,
+          "Disabled": false,
+          "Output": [
+            "nextval('problems_id_seq'::regclass)",
+            "'Demo seed problem'::character varying(150)",
+            "'Add A and B'::text",
+            "'Two integers'::text",
+            "'Their sum'::text",
+            "'-1000 <= A,B <= 1000'::text",
+            "'EASY'::character varying(10)",
+            "2000"
+          ],
+          "Shared Hit Blocks": 15,
+          "Shared Read Blocks": 0,
+          "Shared Dirtied Blocks": 0,
+          "Shared Written Blocks": 0,
+          "Local Hit Blocks": 0,
+          "Local Read Blocks": 0,
+          "Local Dirtied Blocks": 0,
+          "Local Written Blocks": 0,
+          "Temp Read Blocks": 0,
+          "Temp Written Blocks": 0
+        }
+      ]
+    },
+    "Planning": {
+      "Shared Hit Blocks": 9,
+      "Shared Read Blocks": 0,
+      "Shared Dirtied Blocks": 0,
+      "Shared Written Blocks": 0,
+      "Local Hit Blocks": 0,
+      "Local Read Blocks": 0,
+      "Local Dirtied Blocks": 0,
+      "Local Written Blocks": 0,
+      "Temp Read Blocks": 0,
+      "Temp Written Blocks": 0
+    },
+    "Planning Time": 0.031,
+    "Triggers": [],
+    "Execution Time": 0.061
+  }
+]
+
+-- Run 3
+[
+  {
+    "Plan": {
+      "Node Type": "ModifyTable",
+      "Operation": "Insert",
+      "Parallel Aware": false,
+      "Async Capable": false,
+      "Relation Name": "problems",
+      "Schema": "public",
+      "Alias": "problems",
+      "Startup Cost": 0.0,
+      "Total Cost": 0.01,
+      "Plan Rows": 1,
+      "Plan Width": 243,
+      "Actual Startup Time": 0.052,
+      "Actual Total Time": 0.052,
+      "Actual Rows": 1.0,
+      "Actual Loops": 1,
+      "Disabled": false,
+      "Output": [
+        "problems.id",
+        "problems.title",
+        "problems.description",
+        "problems.input_format",
+        "problems.output_format",
+        "problems.constraints_text",
+        "problems.difficulty",
+        "problems.time_limit_ms"
+      ],
+      "Shared Hit Blocks": 48,
+      "Shared Read Blocks": 0,
+      "Shared Dirtied Blocks": 0,
+      "Shared Written Blocks": 0,
+      "Local Hit Blocks": 0,
+      "Local Read Blocks": 0,
+      "Local Dirtied Blocks": 0,
+      "Local Written Blocks": 0,
+      "Temp Read Blocks": 0,
+      "Temp Written Blocks": 0,
+      "Plans": [
+        {
+          "Node Type": "Result",
+          "Parent Relationship": "Outer",
+          "Parallel Aware": false,
+          "Async Capable": false,
+          "Startup Cost": 0.0,
+          "Total Cost": 0.01,
+          "Plan Rows": 1,
+          "Plan Width": 243,
+          "Actual Startup Time": 0.014,
+          "Actual Total Time": 0.014,
+          "Actual Rows": 1.0,
+          "Actual Loops": 1,
+          "Disabled": false,
+          "Output": [
+            "nextval('problems_id_seq'::regclass)",
+            "'Demo seed problem'::character varying(150)",
+            "'Add A and B'::text",
+            "'Two integers'::text",
+            "'Their sum'::text",
+            "'-1000 <= A,B <= 1000'::text",
+            "'EASY'::character varying(10)",
+            "2000"
+          ],
+          "Shared Hit Blocks": 15,
+          "Shared Read Blocks": 0,
+          "Shared Dirtied Blocks": 0,
+          "Shared Written Blocks": 0,
+          "Local Hit Blocks": 0,
+          "Local Read Blocks": 0,
+          "Local Dirtied Blocks": 0,
+          "Local Written Blocks": 0,
+          "Temp Read Blocks": 0,
+          "Temp Written Blocks": 0
+        }
+      ]
+    },
+    "Planning": {
+      "Shared Hit Blocks": 9,
+      "Shared Read Blocks": 0,
+      "Shared Dirtied Blocks": 0,
+      "Shared Written Blocks": 0,
+      "Local Hit Blocks": 0,
+      "Local Read Blocks": 0,
+      "Local Dirtied Blocks": 0,
+      "Local Written Blocks": 0,
+      "Temp Read Blocks": 0,
+      "Temp Written Blocks": 0
+    },
+    "Planning Time": 0.037,
+    "Triggers": [],
+    "Execution Time": 0.06
+  }
+]

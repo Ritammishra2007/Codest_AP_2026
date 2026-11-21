@@ -1,0 +1,263 @@
+-- Q20: Judging Worker Crash Recovery Reset
+-- WRITE
+-- Source: backend/services/judgingService.js
+-- SQL:
+UPDATE "submissions" SET "status" = 'PENDING' WHERE "status" = 'RUNNING';
+-- Preparation inside transaction, outside timed statement:
+-- None
+-- Every run: BEGIN; preparation; EXPLAIN (...); ROLLBACK;
+
+-- Run 1
+[
+  {
+    "Plan": {
+      "Node Type": "ModifyTable",
+      "Operation": "Update",
+      "Parallel Aware": false,
+      "Async Capable": false,
+      "Relation Name": "submissions",
+      "Schema": "public",
+      "Alias": "submissions",
+      "Startup Cost": 0.0,
+      "Total Cost": 1.02,
+      "Plan Rows": 0,
+      "Plan Width": 0,
+      "Actual Startup Time": 0.029,
+      "Actual Total Time": 0.029,
+      "Actual Rows": 0.0,
+      "Actual Loops": 1,
+      "Disabled": false,
+      "Shared Hit Blocks": 12,
+      "Shared Read Blocks": 0,
+      "Shared Dirtied Blocks": 0,
+      "Shared Written Blocks": 0,
+      "Local Hit Blocks": 0,
+      "Local Read Blocks": 0,
+      "Local Dirtied Blocks": 0,
+      "Local Written Blocks": 0,
+      "Temp Read Blocks": 0,
+      "Temp Written Blocks": 0,
+      "Plans": [
+        {
+          "Node Type": "Seq Scan",
+          "Parent Relationship": "Outer",
+          "Parallel Aware": false,
+          "Async Capable": false,
+          "Relation Name": "submissions",
+          "Schema": "public",
+          "Alias": "submissions",
+          "Startup Cost": 0.0,
+          "Total Cost": 1.02,
+          "Plan Rows": 1,
+          "Plan Width": 20,
+          "Actual Startup Time": 0.003,
+          "Actual Total Time": 0.003,
+          "Actual Rows": 1.0,
+          "Actual Loops": 1,
+          "Disabled": false,
+          "Output": [
+            "'PENDING'::character varying(10)",
+            "ctid"
+          ],
+          "Filter": "((submissions.status)::text = 'RUNNING'::text)",
+          "Rows Removed by Filter": 1,
+          "Shared Hit Blocks": 1,
+          "Shared Read Blocks": 0,
+          "Shared Dirtied Blocks": 0,
+          "Shared Written Blocks": 0,
+          "Local Hit Blocks": 0,
+          "Local Read Blocks": 0,
+          "Local Dirtied Blocks": 0,
+          "Local Written Blocks": 0,
+          "Temp Read Blocks": 0,
+          "Temp Written Blocks": 0
+        }
+      ]
+    },
+    "Planning": {
+      "Shared Hit Blocks": 75,
+      "Shared Read Blocks": 0,
+      "Shared Dirtied Blocks": 0,
+      "Shared Written Blocks": 0,
+      "Local Hit Blocks": 0,
+      "Local Read Blocks": 0,
+      "Local Dirtied Blocks": 0,
+      "Local Written Blocks": 0,
+      "Temp Read Blocks": 0,
+      "Temp Written Blocks": 0
+    },
+    "Planning Time": 0.117,
+    "Triggers": [],
+    "Execution Time": 0.059
+  }
+]
+
+-- Run 2
+[
+  {
+    "Plan": {
+      "Node Type": "ModifyTable",
+      "Operation": "Update",
+      "Parallel Aware": false,
+      "Async Capable": false,
+      "Relation Name": "submissions",
+      "Schema": "public",
+      "Alias": "submissions",
+      "Startup Cost": 0.0,
+      "Total Cost": 1.02,
+      "Plan Rows": 0,
+      "Plan Width": 0,
+      "Actual Startup Time": 0.028,
+      "Actual Total Time": 0.028,
+      "Actual Rows": 0.0,
+      "Actual Loops": 1,
+      "Disabled": false,
+      "Shared Hit Blocks": 12,
+      "Shared Read Blocks": 0,
+      "Shared Dirtied Blocks": 0,
+      "Shared Written Blocks": 0,
+      "Local Hit Blocks": 0,
+      "Local Read Blocks": 0,
+      "Local Dirtied Blocks": 0,
+      "Local Written Blocks": 0,
+      "Temp Read Blocks": 0,
+      "Temp Written Blocks": 0,
+      "Plans": [
+        {
+          "Node Type": "Seq Scan",
+          "Parent Relationship": "Outer",
+          "Parallel Aware": false,
+          "Async Capable": false,
+          "Relation Name": "submissions",
+          "Schema": "public",
+          "Alias": "submissions",
+          "Startup Cost": 0.0,
+          "Total Cost": 1.02,
+          "Plan Rows": 1,
+          "Plan Width": 20,
+          "Actual Startup Time": 0.003,
+          "Actual Total Time": 0.004,
+          "Actual Rows": 1.0,
+          "Actual Loops": 1,
+          "Disabled": false,
+          "Output": [
+            "'PENDING'::character varying(10)",
+            "ctid"
+          ],
+          "Filter": "((submissions.status)::text = 'RUNNING'::text)",
+          "Rows Removed by Filter": 1,
+          "Shared Hit Blocks": 1,
+          "Shared Read Blocks": 0,
+          "Shared Dirtied Blocks": 0,
+          "Shared Written Blocks": 0,
+          "Local Hit Blocks": 0,
+          "Local Read Blocks": 0,
+          "Local Dirtied Blocks": 0,
+          "Local Written Blocks": 0,
+          "Temp Read Blocks": 0,
+          "Temp Written Blocks": 0
+        }
+      ]
+    },
+    "Planning": {
+      "Shared Hit Blocks": 75,
+      "Shared Read Blocks": 0,
+      "Shared Dirtied Blocks": 0,
+      "Shared Written Blocks": 0,
+      "Local Hit Blocks": 0,
+      "Local Read Blocks": 0,
+      "Local Dirtied Blocks": 0,
+      "Local Written Blocks": 0,
+      "Temp Read Blocks": 0,
+      "Temp Written Blocks": 0
+    },
+    "Planning Time": 0.114,
+    "Triggers": [],
+    "Execution Time": 0.054
+  }
+]
+
+-- Run 3
+[
+  {
+    "Plan": {
+      "Node Type": "ModifyTable",
+      "Operation": "Update",
+      "Parallel Aware": false,
+      "Async Capable": false,
+      "Relation Name": "submissions",
+      "Schema": "public",
+      "Alias": "submissions",
+      "Startup Cost": 0.0,
+      "Total Cost": 1.02,
+      "Plan Rows": 0,
+      "Plan Width": 0,
+      "Actual Startup Time": 0.027,
+      "Actual Total Time": 0.027,
+      "Actual Rows": 0.0,
+      "Actual Loops": 1,
+      "Disabled": false,
+      "Shared Hit Blocks": 12,
+      "Shared Read Blocks": 0,
+      "Shared Dirtied Blocks": 0,
+      "Shared Written Blocks": 0,
+      "Local Hit Blocks": 0,
+      "Local Read Blocks": 0,
+      "Local Dirtied Blocks": 0,
+      "Local Written Blocks": 0,
+      "Temp Read Blocks": 0,
+      "Temp Written Blocks": 0,
+      "Plans": [
+        {
+          "Node Type": "Seq Scan",
+          "Parent Relationship": "Outer",
+          "Parallel Aware": false,
+          "Async Capable": false,
+          "Relation Name": "submissions",
+          "Schema": "public",
+          "Alias": "submissions",
+          "Startup Cost": 0.0,
+          "Total Cost": 1.02,
+          "Plan Rows": 1,
+          "Plan Width": 20,
+          "Actual Startup Time": 0.003,
+          "Actual Total Time": 0.003,
+          "Actual Rows": 1.0,
+          "Actual Loops": 1,
+          "Disabled": false,
+          "Output": [
+            "'PENDING'::character varying(10)",
+            "ctid"
+          ],
+          "Filter": "((submissions.status)::text = 'RUNNING'::text)",
+          "Rows Removed by Filter": 1,
+          "Shared Hit Blocks": 1,
+          "Shared Read Blocks": 0,
+          "Shared Dirtied Blocks": 0,
+          "Shared Written Blocks": 0,
+          "Local Hit Blocks": 0,
+          "Local Read Blocks": 0,
+          "Local Dirtied Blocks": 0,
+          "Local Written Blocks": 0,
+          "Temp Read Blocks": 0,
+          "Temp Written Blocks": 0
+        }
+      ]
+    },
+    "Planning": {
+      "Shared Hit Blocks": 75,
+      "Shared Read Blocks": 0,
+      "Shared Dirtied Blocks": 0,
+      "Shared Written Blocks": 0,
+      "Local Hit Blocks": 0,
+      "Local Read Blocks": 0,
+      "Local Dirtied Blocks": 0,
+      "Local Written Blocks": 0,
+      "Temp Read Blocks": 0,
+      "Temp Written Blocks": 0
+    },
+    "Planning Time": 0.111,
+    "Triggers": [],
+    "Execution Time": 0.055
+  }
+]

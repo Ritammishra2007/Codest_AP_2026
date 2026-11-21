@@ -1,0 +1,278 @@
+-- Q29: Reset: delete all rooms
+-- WRITE
+-- Source: backend/prisma/reset.js
+-- SQL:
+DELETE FROM rooms;
+-- Preparation inside transaction, outside timed statement:
+DELETE FROM submissions;
+-- Every run: BEGIN; preparation; EXPLAIN (...); ROLLBACK;
+
+-- Run 1
+[
+  {
+    "Plan": {
+      "Node Type": "ModifyTable",
+      "Operation": "Delete",
+      "Parallel Aware": false,
+      "Async Capable": false,
+      "Relation Name": "rooms",
+      "Schema": "public",
+      "Alias": "rooms",
+      "Startup Cost": 0.0,
+      "Total Cost": 1.02,
+      "Plan Rows": 0,
+      "Plan Width": 0,
+      "Actual Startup Time": 0.017,
+      "Actual Total Time": 0.017,
+      "Actual Rows": 0.0,
+      "Actual Loops": 1,
+      "Disabled": false,
+      "Shared Hit Blocks": 8,
+      "Shared Read Blocks": 0,
+      "Shared Dirtied Blocks": 0,
+      "Shared Written Blocks": 0,
+      "Local Hit Blocks": 0,
+      "Local Read Blocks": 0,
+      "Local Dirtied Blocks": 0,
+      "Local Written Blocks": 0,
+      "Temp Read Blocks": 0,
+      "Temp Written Blocks": 0,
+      "Plans": [
+        {
+          "Node Type": "Seq Scan",
+          "Parent Relationship": "Outer",
+          "Parallel Aware": false,
+          "Async Capable": false,
+          "Relation Name": "rooms",
+          "Schema": "public",
+          "Alias": "rooms",
+          "Startup Cost": 0.0,
+          "Total Cost": 1.02,
+          "Plan Rows": 2,
+          "Plan Width": 6,
+          "Actual Startup Time": 0.002,
+          "Actual Total Time": 0.002,
+          "Actual Rows": 2.0,
+          "Actual Loops": 1,
+          "Disabled": false,
+          "Output": [
+            "ctid"
+          ],
+          "Shared Hit Blocks": 1,
+          "Shared Read Blocks": 0,
+          "Shared Dirtied Blocks": 0,
+          "Shared Written Blocks": 0,
+          "Local Hit Blocks": 0,
+          "Local Read Blocks": 0,
+          "Local Dirtied Blocks": 0,
+          "Local Written Blocks": 0,
+          "Temp Read Blocks": 0,
+          "Temp Written Blocks": 0
+        }
+      ]
+    },
+    "Planning": {
+      "Shared Hit Blocks": 33,
+      "Shared Read Blocks": 0,
+      "Shared Dirtied Blocks": 0,
+      "Shared Written Blocks": 0,
+      "Local Hit Blocks": 0,
+      "Local Read Blocks": 0,
+      "Local Dirtied Blocks": 0,
+      "Local Written Blocks": 0,
+      "Temp Read Blocks": 0,
+      "Temp Written Blocks": 0
+    },
+    "Planning Time": 0.07,
+    "Triggers": [
+      {
+        "Trigger Name": "RI_ConstraintTrigger_a_16502",
+        "Constraint Name": "submissions_room_id_fkey",
+        "Relation": "rooms",
+        "Time": 0.103,
+        "Calls": 2
+      }
+    ],
+    "Execution Time": 0.125
+  }
+]
+
+-- Run 2
+[
+  {
+    "Plan": {
+      "Node Type": "ModifyTable",
+      "Operation": "Delete",
+      "Parallel Aware": false,
+      "Async Capable": false,
+      "Relation Name": "rooms",
+      "Schema": "public",
+      "Alias": "rooms",
+      "Startup Cost": 0.0,
+      "Total Cost": 1.02,
+      "Plan Rows": 0,
+      "Plan Width": 0,
+      "Actual Startup Time": 0.014,
+      "Actual Total Time": 0.014,
+      "Actual Rows": 0.0,
+      "Actual Loops": 1,
+      "Disabled": false,
+      "Shared Hit Blocks": 8,
+      "Shared Read Blocks": 0,
+      "Shared Dirtied Blocks": 0,
+      "Shared Written Blocks": 0,
+      "Local Hit Blocks": 0,
+      "Local Read Blocks": 0,
+      "Local Dirtied Blocks": 0,
+      "Local Written Blocks": 0,
+      "Temp Read Blocks": 0,
+      "Temp Written Blocks": 0,
+      "Plans": [
+        {
+          "Node Type": "Seq Scan",
+          "Parent Relationship": "Outer",
+          "Parallel Aware": false,
+          "Async Capable": false,
+          "Relation Name": "rooms",
+          "Schema": "public",
+          "Alias": "rooms",
+          "Startup Cost": 0.0,
+          "Total Cost": 1.02,
+          "Plan Rows": 2,
+          "Plan Width": 6,
+          "Actual Startup Time": 0.001,
+          "Actual Total Time": 0.001,
+          "Actual Rows": 2.0,
+          "Actual Loops": 1,
+          "Disabled": false,
+          "Output": [
+            "ctid"
+          ],
+          "Shared Hit Blocks": 1,
+          "Shared Read Blocks": 0,
+          "Shared Dirtied Blocks": 0,
+          "Shared Written Blocks": 0,
+          "Local Hit Blocks": 0,
+          "Local Read Blocks": 0,
+          "Local Dirtied Blocks": 0,
+          "Local Written Blocks": 0,
+          "Temp Read Blocks": 0,
+          "Temp Written Blocks": 0
+        }
+      ]
+    },
+    "Planning": {
+      "Shared Hit Blocks": 33,
+      "Shared Read Blocks": 0,
+      "Shared Dirtied Blocks": 0,
+      "Shared Written Blocks": 0,
+      "Local Hit Blocks": 0,
+      "Local Read Blocks": 0,
+      "Local Dirtied Blocks": 0,
+      "Local Written Blocks": 0,
+      "Temp Read Blocks": 0,
+      "Temp Written Blocks": 0
+    },
+    "Planning Time": 0.065,
+    "Triggers": [
+      {
+        "Trigger Name": "RI_ConstraintTrigger_a_16502",
+        "Constraint Name": "submissions_room_id_fkey",
+        "Relation": "rooms",
+        "Time": 0.092,
+        "Calls": 2
+      }
+    ],
+    "Execution Time": 0.111
+  }
+]
+
+-- Run 3
+[
+  {
+    "Plan": {
+      "Node Type": "ModifyTable",
+      "Operation": "Delete",
+      "Parallel Aware": false,
+      "Async Capable": false,
+      "Relation Name": "rooms",
+      "Schema": "public",
+      "Alias": "rooms",
+      "Startup Cost": 0.0,
+      "Total Cost": 1.02,
+      "Plan Rows": 0,
+      "Plan Width": 0,
+      "Actual Startup Time": 0.015,
+      "Actual Total Time": 0.015,
+      "Actual Rows": 0.0,
+      "Actual Loops": 1,
+      "Disabled": false,
+      "Shared Hit Blocks": 8,
+      "Shared Read Blocks": 0,
+      "Shared Dirtied Blocks": 0,
+      "Shared Written Blocks": 0,
+      "Local Hit Blocks": 0,
+      "Local Read Blocks": 0,
+      "Local Dirtied Blocks": 0,
+      "Local Written Blocks": 0,
+      "Temp Read Blocks": 0,
+      "Temp Written Blocks": 0,
+      "Plans": [
+        {
+          "Node Type": "Seq Scan",
+          "Parent Relationship": "Outer",
+          "Parallel Aware": false,
+          "Async Capable": false,
+          "Relation Name": "rooms",
+          "Schema": "public",
+          "Alias": "rooms",
+          "Startup Cost": 0.0,
+          "Total Cost": 1.02,
+          "Plan Rows": 2,
+          "Plan Width": 6,
+          "Actual Startup Time": 0.001,
+          "Actual Total Time": 0.001,
+          "Actual Rows": 2.0,
+          "Actual Loops": 1,
+          "Disabled": false,
+          "Output": [
+            "ctid"
+          ],
+          "Shared Hit Blocks": 1,
+          "Shared Read Blocks": 0,
+          "Shared Dirtied Blocks": 0,
+          "Shared Written Blocks": 0,
+          "Local Hit Blocks": 0,
+          "Local Read Blocks": 0,
+          "Local Dirtied Blocks": 0,
+          "Local Written Blocks": 0,
+          "Temp Read Blocks": 0,
+          "Temp Written Blocks": 0
+        }
+      ]
+    },
+    "Planning": {
+      "Shared Hit Blocks": 33,
+      "Shared Read Blocks": 0,
+      "Shared Dirtied Blocks": 0,
+      "Shared Written Blocks": 0,
+      "Local Hit Blocks": 0,
+      "Local Read Blocks": 0,
+      "Local Dirtied Blocks": 0,
+      "Local Written Blocks": 0,
+      "Temp Read Blocks": 0,
+      "Temp Written Blocks": 0
+    },
+    "Planning Time": 0.059,
+    "Triggers": [
+      {
+        "Trigger Name": "RI_ConstraintTrigger_a_16502",
+        "Constraint Name": "submissions_room_id_fkey",
+        "Relation": "rooms",
+        "Time": 0.099,
+        "Calls": 2
+      }
+    ],
+    "Execution Time": 0.119
+  }
+]

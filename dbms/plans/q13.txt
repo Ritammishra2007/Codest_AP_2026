@@ -1,0 +1,299 @@
+-- Q13: Fetch Sample Test Cases for Problem
+-- READ
+-- Source: backend/controllers/roomController.js
+-- SQL:
+SELECT "id", "position", "is_sample", "input", "expected_output" FROM "test_cases" WHERE "problem_id" = 1 AND "is_sample" = TRUE ORDER BY "position" ASC;
+-- Preparation inside transaction, outside timed statement:
+-- None
+-- Every run: BEGIN; preparation; EXPLAIN (...); ROLLBACK;
+
+-- Run 1
+[
+  {
+    "Plan": {
+      "Node Type": "Sort",
+      "Parallel Aware": false,
+      "Async Capable": false,
+      "Startup Cost": 1.26,
+      "Total Cost": 1.26,
+      "Plan Rows": 2,
+      "Plan Width": 19,
+      "Actual Startup Time": 0.009,
+      "Actual Total Time": 0.009,
+      "Actual Rows": 2.0,
+      "Actual Loops": 1,
+      "Disabled": false,
+      "Output": [
+        "id",
+        "\"position\"",
+        "is_sample",
+        "input",
+        "expected_output"
+      ],
+      "Sort Key": [
+        "test_cases.\"position\""
+      ],
+      "Sort Method": "quicksort",
+      "Sort Space Used": 25,
+      "Sort Space Type": "Memory",
+      "Shared Hit Blocks": 4,
+      "Shared Read Blocks": 0,
+      "Shared Dirtied Blocks": 0,
+      "Shared Written Blocks": 0,
+      "Local Hit Blocks": 0,
+      "Local Read Blocks": 0,
+      "Local Dirtied Blocks": 0,
+      "Local Written Blocks": 0,
+      "Temp Read Blocks": 0,
+      "Temp Written Blocks": 0,
+      "Plans": [
+        {
+          "Node Type": "Seq Scan",
+          "Parent Relationship": "Outer",
+          "Parallel Aware": false,
+          "Async Capable": false,
+          "Relation Name": "test_cases",
+          "Schema": "public",
+          "Alias": "test_cases",
+          "Startup Cost": 0.0,
+          "Total Cost": 1.25,
+          "Plan Rows": 2,
+          "Plan Width": 19,
+          "Actual Startup Time": 0.002,
+          "Actual Total Time": 0.003,
+          "Actual Rows": 2.0,
+          "Actual Loops": 1,
+          "Disabled": false,
+          "Output": [
+            "id",
+            "\"position\"",
+            "is_sample",
+            "input",
+            "expected_output"
+          ],
+          "Filter": "(test_cases.is_sample AND (test_cases.problem_id = 1))",
+          "Rows Removed by Filter": 18,
+          "Shared Hit Blocks": 1,
+          "Shared Read Blocks": 0,
+          "Shared Dirtied Blocks": 0,
+          "Shared Written Blocks": 0,
+          "Local Hit Blocks": 0,
+          "Local Read Blocks": 0,
+          "Local Dirtied Blocks": 0,
+          "Local Written Blocks": 0,
+          "Temp Read Blocks": 0,
+          "Temp Written Blocks": 0
+        }
+      ]
+    },
+    "Planning": {
+      "Shared Hit Blocks": 94,
+      "Shared Read Blocks": 0,
+      "Shared Dirtied Blocks": 0,
+      "Shared Written Blocks": 0,
+      "Local Hit Blocks": 0,
+      "Local Read Blocks": 0,
+      "Local Dirtied Blocks": 0,
+      "Local Written Blocks": 0,
+      "Temp Read Blocks": 0,
+      "Temp Written Blocks": 0
+    },
+    "Planning Time": 0.153,
+    "Triggers": [],
+    "Execution Time": 0.022
+  }
+]
+
+-- Run 2
+[
+  {
+    "Plan": {
+      "Node Type": "Sort",
+      "Parallel Aware": false,
+      "Async Capable": false,
+      "Startup Cost": 1.26,
+      "Total Cost": 1.26,
+      "Plan Rows": 2,
+      "Plan Width": 19,
+      "Actual Startup Time": 0.008,
+      "Actual Total Time": 0.008,
+      "Actual Rows": 2.0,
+      "Actual Loops": 1,
+      "Disabled": false,
+      "Output": [
+        "id",
+        "\"position\"",
+        "is_sample",
+        "input",
+        "expected_output"
+      ],
+      "Sort Key": [
+        "test_cases.\"position\""
+      ],
+      "Sort Method": "quicksort",
+      "Sort Space Used": 25,
+      "Sort Space Type": "Memory",
+      "Shared Hit Blocks": 4,
+      "Shared Read Blocks": 0,
+      "Shared Dirtied Blocks": 0,
+      "Shared Written Blocks": 0,
+      "Local Hit Blocks": 0,
+      "Local Read Blocks": 0,
+      "Local Dirtied Blocks": 0,
+      "Local Written Blocks": 0,
+      "Temp Read Blocks": 0,
+      "Temp Written Blocks": 0,
+      "Plans": [
+        {
+          "Node Type": "Seq Scan",
+          "Parent Relationship": "Outer",
+          "Parallel Aware": false,
+          "Async Capable": false,
+          "Relation Name": "test_cases",
+          "Schema": "public",
+          "Alias": "test_cases",
+          "Startup Cost": 0.0,
+          "Total Cost": 1.25,
+          "Plan Rows": 2,
+          "Plan Width": 19,
+          "Actual Startup Time": 0.002,
+          "Actual Total Time": 0.003,
+          "Actual Rows": 2.0,
+          "Actual Loops": 1,
+          "Disabled": false,
+          "Output": [
+            "id",
+            "\"position\"",
+            "is_sample",
+            "input",
+            "expected_output"
+          ],
+          "Filter": "(test_cases.is_sample AND (test_cases.problem_id = 1))",
+          "Rows Removed by Filter": 18,
+          "Shared Hit Blocks": 1,
+          "Shared Read Blocks": 0,
+          "Shared Dirtied Blocks": 0,
+          "Shared Written Blocks": 0,
+          "Local Hit Blocks": 0,
+          "Local Read Blocks": 0,
+          "Local Dirtied Blocks": 0,
+          "Local Written Blocks": 0,
+          "Temp Read Blocks": 0,
+          "Temp Written Blocks": 0
+        }
+      ]
+    },
+    "Planning": {
+      "Shared Hit Blocks": 94,
+      "Shared Read Blocks": 0,
+      "Shared Dirtied Blocks": 0,
+      "Shared Written Blocks": 0,
+      "Local Hit Blocks": 0,
+      "Local Read Blocks": 0,
+      "Local Dirtied Blocks": 0,
+      "Local Written Blocks": 0,
+      "Temp Read Blocks": 0,
+      "Temp Written Blocks": 0
+    },
+    "Planning Time": 0.123,
+    "Triggers": [],
+    "Execution Time": 0.02
+  }
+]
+
+-- Run 3
+[
+  {
+    "Plan": {
+      "Node Type": "Sort",
+      "Parallel Aware": false,
+      "Async Capable": false,
+      "Startup Cost": 1.26,
+      "Total Cost": 1.26,
+      "Plan Rows": 2,
+      "Plan Width": 19,
+      "Actual Startup Time": 0.009,
+      "Actual Total Time": 0.009,
+      "Actual Rows": 2.0,
+      "Actual Loops": 1,
+      "Disabled": false,
+      "Output": [
+        "id",
+        "\"position\"",
+        "is_sample",
+        "input",
+        "expected_output"
+      ],
+      "Sort Key": [
+        "test_cases.\"position\""
+      ],
+      "Sort Method": "quicksort",
+      "Sort Space Used": 25,
+      "Sort Space Type": "Memory",
+      "Shared Hit Blocks": 4,
+      "Shared Read Blocks": 0,
+      "Shared Dirtied Blocks": 0,
+      "Shared Written Blocks": 0,
+      "Local Hit Blocks": 0,
+      "Local Read Blocks": 0,
+      "Local Dirtied Blocks": 0,
+      "Local Written Blocks": 0,
+      "Temp Read Blocks": 0,
+      "Temp Written Blocks": 0,
+      "Plans": [
+        {
+          "Node Type": "Seq Scan",
+          "Parent Relationship": "Outer",
+          "Parallel Aware": false,
+          "Async Capable": false,
+          "Relation Name": "test_cases",
+          "Schema": "public",
+          "Alias": "test_cases",
+          "Startup Cost": 0.0,
+          "Total Cost": 1.25,
+          "Plan Rows": 2,
+          "Plan Width": 19,
+          "Actual Startup Time": 0.002,
+          "Actual Total Time": 0.003,
+          "Actual Rows": 2.0,
+          "Actual Loops": 1,
+          "Disabled": false,
+          "Output": [
+            "id",
+            "\"position\"",
+            "is_sample",
+            "input",
+            "expected_output"
+          ],
+          "Filter": "(test_cases.is_sample AND (test_cases.problem_id = 1))",
+          "Rows Removed by Filter": 18,
+          "Shared Hit Blocks": 1,
+          "Shared Read Blocks": 0,
+          "Shared Dirtied Blocks": 0,
+          "Shared Written Blocks": 0,
+          "Local Hit Blocks": 0,
+          "Local Read Blocks": 0,
+          "Local Dirtied Blocks": 0,
+          "Local Written Blocks": 0,
+          "Temp Read Blocks": 0,
+          "Temp Written Blocks": 0
+        }
+      ]
+    },
+    "Planning": {
+      "Shared Hit Blocks": 94,
+      "Shared Read Blocks": 0,
+      "Shared Dirtied Blocks": 0,
+      "Shared Written Blocks": 0,
+      "Local Hit Blocks": 0,
+      "Local Read Blocks": 0,
+      "Local Dirtied Blocks": 0,
+      "Local Written Blocks": 0,
+      "Temp Read Blocks": 0,
+      "Temp Written Blocks": 0
+    },
+    "Planning Time": 0.127,
+    "Triggers": [],
+    "Execution Time": 0.021
+  }
+]
